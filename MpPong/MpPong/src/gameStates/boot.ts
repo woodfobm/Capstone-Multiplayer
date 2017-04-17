@@ -5,8 +5,9 @@
         }
 
         create() {
+        //Sets background color below Could maybe cycle this 
             this.stage.setBackgroundColor(0x061639);
-            this.input.maxPointers = 1;
+            this.input.maxPointers = 1; //Not sure if we need to change this with the MP aspect?
             this.stage.disableVisibilityChange = true;
 
             if (this.game.device.desktop) {
@@ -23,6 +24,7 @@
                 this.scale.pageAlignHorizontally = true;
                 this.scale.refresh();
             }
+            //Passes to the preloader state after initial booting is completed
             this.game.state.start('Preloader', true, false);
         }
     }

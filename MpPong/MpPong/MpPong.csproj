@@ -34,7 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="build\game.js.map" />
-    <Content Include="build\assets\sounds\click.ogg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\utils\" />
@@ -52,6 +51,7 @@
     <TypeScriptCompile Include="tsDefinitions\pixi.comments.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build\assets\sounds\bgMusic.ogg" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

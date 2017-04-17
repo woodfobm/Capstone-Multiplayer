@@ -38,8 +38,6 @@ var MpPong;
                 game.add.existing(_this);
                 game.physics.enable(_this);
                 _this.body.collideWorldBounds = true;
-                _this.body.gravity.x = 10;
-                _this.body.gravity.y = 10;
                 _this.body.bounce.set(1);
                 _this.body.velocity.y = 500;
                 _this.body.velocity.x = 500;
@@ -68,10 +66,10 @@ var MpPong;
             Player.prototype.update = function () {
                 this.body.velocity.y = 0;
                 if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                    this.body.velocity.y = -150;
+                    this.body.velocity.y = -700;
                 }
                 else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-                    this.body.velocity.y = 150;
+                    this.body.velocity.y = 700;
                 }
             };
             return Player;
@@ -161,7 +159,7 @@ var MpPong;
                 this.input.onDown.addOnce(this.fadeOut, this);
             };
             MainMenu.prototype.fadeOut = function () {
-                this.add.audio('click', 1, false).play();
+                this.add.audio('bgMusic', 1, true).play();
                 this.add.tween(this.background).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
                 var tween = this.add.tween(this.logo).to({ y: 800 }, 2000, Phaser.Easing.Linear.None, true);
                 tween.onComplete.add(this.startGame, this);
@@ -191,7 +189,7 @@ var MpPong;
                 this.load.image('ball', './assets/sprites/ball.png');
                 this.load.image('titlepage', './assets/ui/bg.png');
                 this.load.image('logo', './assets/ui/logo.png');
-                this.load.audio('click', './assets/sounds/click.ogg', true);
+                this.load.audio('bgMusic', './assets/sounds/bgMusic.ogg', true);
             };
             Preloader.prototype.create = function () {
                 var tween = this.add.tween(this.loaderText).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);

@@ -7,9 +7,7 @@
         player2: Player;
 
         create() {
-            this.physics.startSystem(Phaser.Physics.ARCADE);
-
-            //this.background = this.add.sprite(-150, 0, 'level01-sprites','background');
+            this.physics.startSystem(Phaser.Physics.ARCADE);//Starts physics system for game and begins creating our player and ball objects
             this.player = new Player(this.game, this.world.centerX - 500, this.world.centerX);
             this.player.anchor.setTo(0, 5);
 
@@ -18,11 +16,16 @@
 
             this.ball = new Ball(this.game, this.world.centerX, this.world.centerX);
             this.ball.anchor.setTo(0, 5);
+            //Going to want some invisible barriers that if the ball hits will score a point
+            //Depending on the side it is scored on 
+            //Must increment score too (score++)
+            //Would then have to reset ball to middle of screen and launch it
            
-            //this.game.debug.text("Use Right and Left arrow keys to move the bat", 0, this.world.height, "red");
+            //this.game.debug.text("Use Up and Down arrow keys to move the paddle", 0, this.world.height, "red");
         }
 
         update() {
+            //Sets up collisions so ball bounces off players
             this.physics.arcade.collide(this.ball, this.player);
             this.physics.arcade.collide(this.ball, this.player2);
         }

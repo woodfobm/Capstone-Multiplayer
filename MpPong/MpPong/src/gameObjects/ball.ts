@@ -7,10 +7,10 @@
             // Physics
             game.physics.enable(this);
             this.body.collideWorldBounds = true;
-            this.body.gravity.x = 10;
-            this.body.gravity.y = 10;
+            //Have to set a initial velocity to ensure the ball bounces off the top and bottom and
+            //the player paddles and doesn't stay in its spawn area
             this.body.bounce.set(1);
-            this.body.velocity.y = 500;
+            this.body.velocity.y = 500; //Maybe change values to signify different difficulty/speed up in game?
             this.body.velocity.x = 500;
         }
     }
