@@ -4,11 +4,13 @@
 
         preload() { // Preloads assets and sets them up so that we can call them by their key (player1, ball logo etc) in other files
             this.loaderText = this.game.add.text(this.world.centerX, 200, "Loading...",
-                { font: "18px Arial", fill: "#A9A91111", align: "center" }); //Won't be seen unless game gets big enough that loading is necessary
+                { font: "36px Arial", fill: "#A9A91111", align: "center" }); //Won't be seen unless game gets big enough that loading is necessary
             this.loaderText.anchor.setTo(0.5);
             this.load.image('player1', './assets/sprites/p1Bar.png');
             this.load.image('player2', './assets/sprites/p1Bar.png');
             this.load.image('ball', './assets/sprites/ball.png');
+            this.load.image('lBound', './assets/sprites/Bound.png');
+            this.load.image('rBound', './assets/sprites/Bound.png');
             this.load.image('titlepage', './assets/ui/bg.png');
             this.load.image('logo', './assets/ui/logo.png');
             this.load.audio('bgMusic', './assets/sounds/bgMusic.ogg', true);    

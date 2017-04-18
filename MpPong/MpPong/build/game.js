@@ -52,6 +52,25 @@ var MpPong;
 (function (MpPong) {
     var Client;
     (function (Client) {
+        var LBound = (function (_super) {
+            __extends(LBound, _super);
+            function LBound(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'lBound', 1) || this;
+                _this.anchor.setTo(0.5);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                _this.body.immovable = true;
+                return _this;
+            }
+            return LBound;
+        }(Phaser.Sprite));
+        Client.LBound = LBound;
+    })(Client = MpPong.Client || (MpPong.Client = {}));
+})(MpPong || (MpPong = {}));
+var MpPong;
+(function (MpPong) {
+    var Client;
+    (function (Client) {
         var Player = (function (_super) {
             __extends(Player, _super);
             function Player(game, x, y) {
@@ -66,15 +85,34 @@ var MpPong;
             Player.prototype.update = function () {
                 this.body.velocity.y = 0;
                 if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                    this.body.velocity.y = -700;
+                    this.body.velocity.y = -800;
                 }
                 else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-                    this.body.velocity.y = 700;
+                    this.body.velocity.y = 800;
                 }
             };
             return Player;
         }(Phaser.Sprite));
         Client.Player = Player;
+    })(Client = MpPong.Client || (MpPong.Client = {}));
+})(MpPong || (MpPong = {}));
+var MpPong;
+(function (MpPong) {
+    var Client;
+    (function (Client) {
+        var RBound = (function (_super) {
+            __extends(RBound, _super);
+            function RBound(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'rBound', 1) || this;
+                _this.anchor.setTo(0.5);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                _this.body.immovable = true;
+                return _this;
+            }
+            return RBound;
+        }(Phaser.Sprite));
+        Client.RBound = RBound;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;
@@ -118,7 +156,10 @@ var MpPong;
         var Level01 = (function (_super) {
             __extends(Level01, _super);
             function Level01() {
-                return _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.p1Score = 0;
+                _this.p2Score = 0;
+                return _this;
             }
             Level01.prototype.create = function () {
                 this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -126,12 +167,43 @@ var MpPong;
                 this.player.anchor.setTo(0, 5);
                 this.player2 = new Client.Player(this.game, this.world.centerX + 475, this.world.centerX);
                 this.player2.anchor.setTo(0, 5);
+                this.lBound = new Client.LBound(this.game, (this.world.centerX - this.world.centerX), this.world.centerX);
+                this.rBound = new Client.RBound(this.game, (this.world.centerX + this.world.centerX), this.world.centerX);
+                this.p1ScoreText = this.add.text((this.world.centerX - (this.world.centerX - 300)), this.world.centerX - 500, 'P1 Score: 0', { fontSize: '32px', fill: '#000' });
+                this.p2ScoreText = this.add.text((this.world.centerX + (this.world.centerX - 450)), this.world.centerX - 500, 'P2 Score: 0', { fontSize: '32px', fill: '#000' });
+                this.time.events.add(Phaser.Timer.SECOND * 2, this.resetBall, this);
+            };
+            Level01.prototype.createBall = function () {
                 this.ball = new Client.Ball(this.game, this.world.centerX, this.world.centerX);
                 this.ball.anchor.setTo(0, 5);
+            };
+            Level01.prototype.resetBall = function () {
+                if (this.ball) {
+                    this.ball.kill();
+                }
+                this.time.events.add(Phaser.Timer.SECOND, this.createBall, this);
+            };
+            Level01.prototype.lBoundHit = function () {
+                this.p2Score += 1;
+                this.p2ScoreText.text = 'P2 Score: ' + this.p2Score;
+                this.resetBall();
+            };
+            Level01.prototype.rBoundHit = function () {
+                this.p1Score += 1;
+                this.p1ScoreText.text = 'P1 Score: ' + this.p1Score;
+                this.resetBall();
+            };
+            Level01.prototype.powerMode = function () {
+                this.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
+                this.player.tint = Math.random() * 0xffffff;
+                this.player2.tint = Math.random() * 0xffffff;
+                this.ball.tint = Math.random() * 0xffffff;
             };
             Level01.prototype.update = function () {
                 this.physics.arcade.collide(this.ball, this.player);
                 this.physics.arcade.collide(this.ball, this.player2);
+                this.physics.arcade.collide(this.ball, this.lBound, this.lBoundHit, null, this);
+                this.physics.arcade.collide(this.ball, this.rBound, this.rBoundHit, null, this);
             };
             return Level01;
         }(Phaser.State));
@@ -182,11 +254,13 @@ var MpPong;
                 return _super !== null && _super.apply(this, arguments) || this;
             }
             Preloader.prototype.preload = function () {
-                this.loaderText = this.game.add.text(this.world.centerX, 200, "Loading...", { font: "18px Arial", fill: "#A9A91111", align: "center" });
+                this.loaderText = this.game.add.text(this.world.centerX, 200, "Loading...", { font: "36px Arial", fill: "#A9A91111", align: "center" });
                 this.loaderText.anchor.setTo(0.5);
                 this.load.image('player1', './assets/sprites/p1Bar.png');
                 this.load.image('player2', './assets/sprites/p1Bar.png');
                 this.load.image('ball', './assets/sprites/ball.png');
+                this.load.image('lBound', './assets/sprites/Bound.png');
+                this.load.image('rBound', './assets/sprites/Bound.png');
                 this.load.image('titlepage', './assets/ui/bg.png');
                 this.load.image('logo', './assets/ui/logo.png');
                 this.load.audio('bgMusic', './assets/sounds/bgMusic.ogg', true);

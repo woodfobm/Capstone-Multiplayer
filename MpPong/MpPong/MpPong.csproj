@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="build\assets\sprites\ball.png" />
+    <Content Include="build\assets\sprites\Bound.png" />
     <Content Include="build\assets\sprites\p1Bar.png" />
     <Content Include="build\assets\ui\bg.png" />
     <Content Include="build\assets\ui\logo.png" />
@@ -40,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\game.ts" />
+    <TypeScriptCompile Include="src\gameObjects\rBound.ts" />
+    <TypeScriptCompile Include="src\gameObjects\lBound.ts" />
     <TypeScriptCompile Include="src\gameObjects\ball.ts" />
     <TypeScriptCompile Include="src\gameObjects\player.ts" />
     <TypeScriptCompile Include="src\gameStates\boot.ts" />

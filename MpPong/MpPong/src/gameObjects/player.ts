@@ -17,9 +17,9 @@
         //doesn't continue to move if no keys are pressed/there is no drag effect
             this.body.velocity.y = 0;
             if (this.game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                this.body.velocity.y = -700;
+                this.body.velocity.y = -800;
             } else if (this.game.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
-                this.body.velocity.y = 700;
+                this.body.velocity.y = 800;
             }
         }
     }

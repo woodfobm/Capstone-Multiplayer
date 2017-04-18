@@ -1,7 +1,7 @@
 ﻿module MpPong.Client {
     export class Ball extends Phaser.Sprite {
         constructor(game: Phaser.Game, x: number, y: number) {
-            super(game, x, y,'ball', 1);
+            super(game, x, y, 'ball', 1);
             this.anchor.setTo(0.5);
             game.add.existing(this);
             // Physics
@@ -12,6 +12,7 @@
             this.body.bounce.set(1);
             this.body.velocity.y = 500; //Maybe change values to signify different difficulty/speed up in game?
             this.body.velocity.x = 500;
+            
         }
     }
 }
