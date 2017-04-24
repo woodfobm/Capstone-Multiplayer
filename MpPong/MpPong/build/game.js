@@ -30,22 +30,19 @@ var MpPong;
 (function (MpPong) {
     var Client;
     (function (Client) {
-        var Ball = (function (_super) {
-            __extends(Ball, _super);
-            function Ball(game, x, y) {
-                var _this = _super.call(this, game, x, y, 'ball', 1) || this;
+        var RBound = (function (_super) {
+            __extends(RBound, _super);
+            function RBound(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'rBound', 1) || this;
                 _this.anchor.setTo(0.5);
                 game.add.existing(_this);
                 game.physics.enable(_this);
-                _this.body.collideWorldBounds = true;
-                _this.body.bounce.set(1);
-                _this.body.velocity.y = 500;
-                _this.body.velocity.x = 500;
+                _this.body.immovable = true;
                 return _this;
             }
-            return Ball;
+            return RBound;
         }(Phaser.Sprite));
-        Client.Ball = Ball;
+        Client.RBound = RBound;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;
@@ -65,6 +62,28 @@ var MpPong;
             return LBound;
         }(Phaser.Sprite));
         Client.LBound = LBound;
+    })(Client = MpPong.Client || (MpPong.Client = {}));
+})(MpPong || (MpPong = {}));
+var MpPong;
+(function (MpPong) {
+    var Client;
+    (function (Client) {
+        var Ball = (function (_super) {
+            __extends(Ball, _super);
+            function Ball(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'ball', 1) || this;
+                _this.anchor.setTo(0.5);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                _this.body.collideWorldBounds = true;
+                _this.body.bounce.set(1);
+                _this.body.velocity.y = 500;
+                _this.body.velocity.x = 500;
+                return _this;
+            }
+            return Ball;
+        }(Phaser.Sprite));
+        Client.Ball = Ball;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;
@@ -94,25 +113,6 @@ var MpPong;
             return Player;
         }(Phaser.Sprite));
         Client.Player = Player;
-    })(Client = MpPong.Client || (MpPong.Client = {}));
-})(MpPong || (MpPong = {}));
-var MpPong;
-(function (MpPong) {
-    var Client;
-    (function (Client) {
-        var RBound = (function (_super) {
-            __extends(RBound, _super);
-            function RBound(game, x, y) {
-                var _this = _super.call(this, game, x, y, 'rBound', 1) || this;
-                _this.anchor.setTo(0.5);
-                game.add.existing(_this);
-                game.physics.enable(_this);
-                _this.body.immovable = true;
-                return _this;
-            }
-            return RBound;
-        }(Phaser.Sprite));
-        Client.RBound = RBound;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;

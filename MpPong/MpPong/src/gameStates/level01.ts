@@ -13,7 +13,7 @@
         p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
 
         create() {
-            this.physics.startSystem(Phaser.Physics.ARCADE);//Starts physics system for game and begins creating our player and ball objects
+            this.physics.startSystem(Phaser.Physics.ARCADE); //Starts physics system for game and begins creating our player and ball objects
             this.player = new Player(this.game, this.world.centerX - 500, this.world.centerX);
             this.player.anchor.setTo(0, 5);
 
@@ -38,8 +38,8 @@
         }
 
         resetBall() {
-        //Kills previous ball if it exists freeing up memory
-        //And resets game
+            //Kills previous ball if it exists freeing up memory
+            //And resets game
             if (this.ball) {
                 this.ball.kill();
             }
@@ -48,7 +48,7 @@
         }
 
         lBoundHit() {
-        //Increments and then updates player score on the fly
+            //Increments and then updates player score on the fly
             this.p2Score += 1;
             this.p2ScoreText.text = 'P2 Score: ' + this.p2Score;   
             this.resetBall();
@@ -61,7 +61,7 @@
         }
 
         powerMode() {
-        //For powerups, careful sort of causes seizures right now
+            //For powerups, careful sort of causes seizures right now
             this.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255); //gets random RGB color for background
             this.player.tint = Math.random() * 0xffffff; //Hex/Numeric color value that is multiplied by math.random
             this.player2.tint = Math.random() * 0xffffff;

@@ -22,11 +22,15 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build\about.html" />
     <Content Include="build\assets\sprites\ball.png" />
     <Content Include="build\assets\sprites\Bound.png" />
     <Content Include="build\assets\sprites\p1Bar.png" />
     <Content Include="build\assets\ui\bg.png" />
     <Content Include="build\assets\ui\logo.png" />
+    <Content Include="build\contact.html" />
+    <Content Include="build\createAccount.html" />
+    <Content Include="build\login.html" />
     <Content Include="build\styles\default.css" />
     <Content Include="build\game.js" />
     <Content Include="build\index.html" />
