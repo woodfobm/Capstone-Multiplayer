@@ -11,6 +11,9 @@
         p2ScoreText: Phaser.Text;
         p1Score = 0;
         p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
+        xVelocity = 500;
+        yVelocity = 500;
+
 
         create() {
             this.physics.startSystem(Phaser.Physics.ARCADE); //Starts physics system for game and begins creating our player and ball objects
@@ -33,16 +36,39 @@
 
         createBall() {
             //Self explanatory
-            this.ball = new Ball(this.game, this.world.centerX, this.world.centerX);
+            this.ball = new Ball(this.game, this.world.centerX, this.world.centerX, this.xVelocity, this.yVelocity);
             this.ball.anchor.setTo(0, 5);
         }
 
-        resetBall() {
+        resetBall(score: number) {
+
             //Kills previous ball if it exists freeing up memory
             //And resets game
             if (this.ball) {
                 this.ball.kill();
             }
+
+
+            // Math.floor(Math.random() * (max - min)) + min;
+            // In this case, min = -500, max = 500.
+            // Math.floor(Math.random() * (500 + (-500))) + (-500);
+
+            if (score === 1) {
+                // Player 1 scored on player 2 so
+                // launch the ball towards player 1 as if
+                // player 2 is serving.
+                this.xVelocity = Math.floor(Math.random() * (0 + (-500))) + (-500);
+                this.yVelocity = Math.floor(Math.random() * (0 + (-500))) + (-500);
+ 
+            } else {
+                // If game is fresh, nobody scored but ALSO
+                // if Player 2 scored on player 1;
+                // launch the ball towards player 2 as if
+                // player 1 is serving.
+                this.xVelocity = Math.floor(Math.random() * (500 + 0)) + (0);
+                this.yVelocity = Math.floor(Math.random() * (500 + 0)) + (0);
+            }
+
             //Adds 1 second delay before new ball is created
             this.time.events.add(Phaser.Timer.SECOND, this.createBall, this);
         }
@@ -50,14 +76,19 @@
         lBoundHit() {
             //Increments and then updates player score on the fly
             this.p2Score += 1;
-            this.p2ScoreText.text = 'P2 Score: ' + this.p2Score;   
-            this.resetBall();
+            this.p2ScoreText.text = 'P2 Score: ' + this.p2Score;
+
+
+            // If player 2 scores, send player 2 to function resetBall
+            this.resetBall(2);
         }
 
         rBoundHit() {
             this.p1Score += 1;
             this.p1ScoreText.text = 'P1 Score: ' + this.p1Score;
-            this.resetBall();
+
+            // If player 1 scores, send player 1 to function resetBall
+            this.resetBall(1);
         }
 
         powerMode() {

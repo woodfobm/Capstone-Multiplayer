@@ -1,7 +1,7 @@
 ﻿
 module MpPong.Client {
     export class Ball extends Phaser.Sprite {
-        constructor(game: Phaser.Game, x: number, y: number) {
+        constructor(game: Phaser.Game, x: number, y: number, xVelocity: number, yVelocity: number) {
             super(game, x, y, 'ball', 1);
             this.anchor.setTo(0.5);
             game.add.existing(this);
@@ -12,11 +12,11 @@ module MpPong.Client {
             //the player paddles and doesn't stay in its spawn area
 
 
-            // This setting is what has the ball starting bottom right. Change the velocities to a random
-            // number so that the ball starts randomly everytime.
+            // This setting is what has the ball maintaining velocity when bouncing.
             this.body.bounce.set(1);
-            this.body.velocity.y = 500; //Maybe change values to signify different difficulty/speed up in game?
-            this.body.velocity.x = 500;
+
+            this.body.velocity.x = xVelocity;
+            this.body.velocity.y = yVelocity;
             
         }
     }

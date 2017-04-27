@@ -30,19 +30,22 @@ var MpPong;
 (function (MpPong) {
     var Client;
     (function (Client) {
-        var RBound = (function (_super) {
-            __extends(RBound, _super);
-            function RBound(game, x, y) {
-                var _this = _super.call(this, game, x, y, 'rBound', 1) || this;
+        var Ball = (function (_super) {
+            __extends(Ball, _super);
+            function Ball(game, x, y, xVelocity, yVelocity) {
+                var _this = _super.call(this, game, x, y, 'ball', 1) || this;
                 _this.anchor.setTo(0.5);
                 game.add.existing(_this);
                 game.physics.enable(_this);
-                _this.body.immovable = true;
+                _this.body.collideWorldBounds = true;
+                _this.body.bounce.set(1);
+                _this.body.velocity.x = xVelocity;
+                _this.body.velocity.y = yVelocity;
                 return _this;
             }
-            return RBound;
+            return Ball;
         }(Phaser.Sprite));
-        Client.RBound = RBound;
+        Client.Ball = Ball;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;
@@ -62,28 +65,6 @@ var MpPong;
             return LBound;
         }(Phaser.Sprite));
         Client.LBound = LBound;
-    })(Client = MpPong.Client || (MpPong.Client = {}));
-})(MpPong || (MpPong = {}));
-var MpPong;
-(function (MpPong) {
-    var Client;
-    (function (Client) {
-        var Ball = (function (_super) {
-            __extends(Ball, _super);
-            function Ball(game, x, y) {
-                var _this = _super.call(this, game, x, y, 'ball', 1) || this;
-                _this.anchor.setTo(0.5);
-                game.add.existing(_this);
-                game.physics.enable(_this);
-                _this.body.collideWorldBounds = true;
-                _this.body.bounce.set(1);
-                _this.body.velocity.y = 500;
-                _this.body.velocity.x = 500;
-                return _this;
-            }
-            return Ball;
-        }(Phaser.Sprite));
-        Client.Ball = Ball;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;
@@ -113,6 +94,25 @@ var MpPong;
             return Player;
         }(Phaser.Sprite));
         Client.Player = Player;
+    })(Client = MpPong.Client || (MpPong.Client = {}));
+})(MpPong || (MpPong = {}));
+var MpPong;
+(function (MpPong) {
+    var Client;
+    (function (Client) {
+        var RBound = (function (_super) {
+            __extends(RBound, _super);
+            function RBound(game, x, y) {
+                var _this = _super.call(this, game, x, y, 'rBound', 1) || this;
+                _this.anchor.setTo(0.5);
+                game.add.existing(_this);
+                game.physics.enable(_this);
+                _this.body.immovable = true;
+                return _this;
+            }
+            return RBound;
+        }(Phaser.Sprite));
+        Client.RBound = RBound;
     })(Client = MpPong.Client || (MpPong.Client = {}));
 })(MpPong || (MpPong = {}));
 var MpPong;
@@ -159,6 +159,8 @@ var MpPong;
                 var _this = _super !== null && _super.apply(this, arguments) || this;
                 _this.p1Score = 0;
                 _this.p2Score = 0;
+                _this.xVelocity = 500;
+                _this.yVelocity = 500;
                 return _this;
             }
             Level01.prototype.create = function () {
@@ -174,24 +176,32 @@ var MpPong;
                 this.time.events.add(Phaser.Timer.SECOND * 2, this.resetBall, this);
             };
             Level01.prototype.createBall = function () {
-                this.ball = new Client.Ball(this.game, this.world.centerX, this.world.centerX);
+                this.ball = new Client.Ball(this.game, this.world.centerX, this.world.centerX, this.xVelocity, this.yVelocity);
                 this.ball.anchor.setTo(0, 5);
             };
-            Level01.prototype.resetBall = function () {
+            Level01.prototype.resetBall = function (score) {
                 if (this.ball) {
                     this.ball.kill();
+                }
+                if (score === 1) {
+                    this.xVelocity = Math.floor(Math.random() * (0 + (-500))) + (-500);
+                    this.yVelocity = Math.floor(Math.random() * (0 + (-500))) + (-500);
+                }
+                else {
+                    this.xVelocity = Math.floor(Math.random() * (500 + 0)) + (0);
+                    this.yVelocity = Math.floor(Math.random() * (500 + 0)) + (0);
                 }
                 this.time.events.add(Phaser.Timer.SECOND, this.createBall, this);
             };
             Level01.prototype.lBoundHit = function () {
                 this.p2Score += 1;
                 this.p2ScoreText.text = 'P2 Score: ' + this.p2Score;
-                this.resetBall();
+                this.resetBall(2);
             };
             Level01.prototype.rBoundHit = function () {
                 this.p1Score += 1;
                 this.p1ScoreText.text = 'P1 Score: ' + this.p1Score;
-                this.resetBall();
+                this.resetBall(1);
             };
             Level01.prototype.powerMode = function () {
                 this.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255);
