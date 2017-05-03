@@ -1,0 +1,83 @@
+﻿div#content > canvas {
+    border-color: #0D2F85;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 2px;
+    padding: 0;
+    margin: 0;
+}
+
+div#how-to {
+    width: 59%;
+    float: left;
+    margin-top: 20px;
+    text-align: center;
+}
+
+div#controls {
+    margin-top: 45px;
+}
+
+form#login {
+    width: 39%;
+    float: right;
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    position: relative;
+}
+
+form#login > .btn-primary {
+    padding: 10px 17px;
+    font-size: 16px;
+    margin-top: 25px;
+    background-color: #355BBC;
+    border-color: #5374D0;
+}
+
+.form-group {
+    padding-top: 15px;
+}
+
+.form-control {
+    width: 50%;
+    margin: 0 auto;
+    display: inline;
+    position: relative;
+    top: -1px;
+}
+
+form#login > div.form-group > label {
+    font-size: 20px;
+    color: #6EDDB3;
+}
+
+div#rules {
+    text-align: left;
+    font-size: 20px;
+    padding-left: 85px;
+}
+
+div#controls {
+    padding: 0;
+    margin: 0 auto;
+}
+
+div#controls img {
+    padding: 0;
+    margin: 7px auto;
+}
+
+div#rules > ol {
+    margin: 10px auto;
+    width: 310px;
+}
+
+div#rules > ol > li > span {
+    color: #45CB99;
+}
+
+div#rules > ol > li {
+    color: #6EDDB3;
+    padding: 3px 0;
+}
