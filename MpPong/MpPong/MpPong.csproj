@@ -17,13 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\build\about.html" />
     <Content Include="wwwroot\build\assets\ui\full.png" />
     <Content Include="wwwroot\build\assets\ui\pause.png" />
     <Content Include="wwwroot\build\assets\ui\quit.jpg" />
-    <Content Include="wwwroot\build\contact.html" />
     <Content Include="wwwroot\build\createAccount.html" />
-    <Content Include="wwwroot\build\login.html" />
     <Content Include="wwwroot\createAccount.html" />
     <Content Include="wwwroot\game.js" />
     <Content Include="wwwroot\game.js.map" />
@@ -44,6 +41,8 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
   </ItemGroup>

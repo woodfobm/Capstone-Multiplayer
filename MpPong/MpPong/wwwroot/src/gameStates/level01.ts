@@ -67,27 +67,45 @@
 
             this.countdownText = this.add.text(this.world.centerX, this.world.centerY, "", { fontSize: '200px', fill: '#FFF' });
             this.countdownText.anchor.setTo(0.5, 0.5);
-            this.startCountdown();
+            
 
             // Math.floor(Math.random() * (max - min)) + min;
-            // In this case, min = -500, max = 500.
-            // Math.floor(Math.random() * (500 + (-500))) + (-500);
-
+            // In this case, min = 300, max = 500.
+          
             if (score === 1) {
                 // Player 1 scored on player 2 so
                 // launch the ball towards player 1 as if
                 // player 2 is serving.
-                this.xVelocity = Math.floor(Math.random() * (100 + (-450))) + (-450);
-                this.yVelocity = Math.floor(Math.random() * (100 + (-450))) + (-450);
+                this.xVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
+                // Invert the X axis so that it actually launches towards player 1.
+                this.xVelocity = this.xVelocity * (-1);
+
+                this.yVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
 
             } else {
                 // If game is fresh, nobody scored but ALSO
                 // if Player 2 scored on player 1;
                 // launch the ball towards player 2 as if
                 // player 1 is serving.
-                this.xVelocity = Math.floor(Math.random() * (450 + 0)) + (0);
-                this.yVelocity = Math.floor(Math.random() * (450 + 0)) + (0);
+                this.xVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
+                this.yVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
             }
+
+            // The yVelocity currently only shoots on the bottom half of the screen
+            // Let's give it a chance to be either a positive or negative shot along the y-coordinate!
+
+            // Initialize a variable to a random number with the possibilities of 1-10
+            var yCoordinateInversion = Math.floor(Math.random() * (10 - 1)) + 1;
+
+            // If the random number is 6 or higher, invert it!
+            // Else not required but; Else - leave it how it is!
+            if (yCoordinateInversion >= 6) {
+                this.yVelocity = this.yVelocity * (-1);
+            }
+
+            // Function that calls the ball with our new velocities for it
+            this.startCountdown();
+
         }
 
         startCountdown() {

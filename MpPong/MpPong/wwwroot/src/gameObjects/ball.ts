@@ -11,8 +11,11 @@
             this.body.bounce.set(1);
              //Have to set a initial velocity to ensure the ball bounces off the top and bottom and
             //the player paddles and doesn't stay in its spawn area
+            this.body.maxVelocity = 525;
+
             this.body.velocity.x = xVelocity;
             this.body.velocity.y = yVelocity;
+
         }
     }
 }

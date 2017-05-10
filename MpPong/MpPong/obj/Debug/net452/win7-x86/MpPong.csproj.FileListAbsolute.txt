@@ -518,3 +518,10 @@ C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Mult
 C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.AssemblyInfo.cs
 C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.exe
 C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.pdb
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.dll
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Remotion.Linq.dll
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\System.Interactive.Async.dll
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Matthew\Documents\College Related\IT-SD Capstone\PongTest\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll

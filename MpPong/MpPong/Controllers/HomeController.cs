@@ -27,6 +27,13 @@ namespace MpPong.Controllers
             return View();
         }
 
+        public IActionResult CreateAnAccount()
+        {
+            ViewData["Message"] = "Your create an account page.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();
