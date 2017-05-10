@@ -8,6 +8,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+// Framework and Data Context (Model) for database
+using Microsoft.EntityFrameworkCore;
+using MpPong.Data;
+
+
 namespace MpPong
 {
     public class Startup
@@ -28,11 +33,21 @@ namespace MpPong
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+
+            // Database connection string - Currently hard coded as a localhost development
+            // UseSqlServer() is where we would define a database connection string.
+            // DefaultConnection can be found in appsettings.json for the project
+            // By default, it creates an SQL Server LocalDb, which is not intended for production use.
+            // It creates the database (databaseName.mdf) locally on the users system at the following path:
+            // C:/Users/<user>/(MpPongPlayerDb.mdf)
+            services.AddDbContext<MpPongPlayerContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, MpPongPlayerContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -55,6 +70,10 @@ namespace MpPong
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // Adds the context to the configure state
+            DbInitializer.Initialize(context);
+
         }
     }
 }
