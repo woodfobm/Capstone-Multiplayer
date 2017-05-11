@@ -525,3 +525,5 @@ C:\Users\Andrew\Desktop\Capstone-Multiplayer-andrewsStuff\MpPong\MpPong\bin\Debu
 C:\Users\Andrew\Desktop\Capstone-Multiplayer-andrewsStuff\MpPong\MpPong\bin\Debug\net452\win7-x86\System.Interactive.Async.dll
 C:\Users\Andrew\Desktop\Capstone-Multiplayer-andrewsStuff\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Andrew\Desktop\Capstone-Multiplayer-andrewsStuff\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\Andrew\Desktop\Capstone-Multiplayer-andrewsStuff\MpPong\MpPong\bin\Debug\net452\win7-x86\System.Web.Razor.dll
+C:\Users\Andrew\Desktop\Capstone-Multiplayer-andrewsStuff\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.AspNetCore.WebSockets.dll

@@ -6,6 +6,7 @@
             this.state.add('Preloader', Preloader, false);
             this.state.add('MainMenu', MainMenu, false);
             this.state.add('Level01', Level01, false);
+            this.state.add('Level02', Level02, false);
             this.state.add('Win', Win, false);
             this.state.add('Lose', Lose, false);
             //Adds our various states and starts our initial boot. This is where we would add more levels or 

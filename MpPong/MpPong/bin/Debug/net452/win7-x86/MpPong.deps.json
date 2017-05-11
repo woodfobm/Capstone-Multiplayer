@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETFramework,Version=v4.5.2/win7-x86",
-    "signature": "2d199e55655d522903de102b7664f325caaa51e1"
+    "signature": "3571eb9c04396cccffc09e54d107b39122744aff"
   },
   "compilationOptions": {
     "defines": [
@@ -24,9 +24,11 @@
       "mppong/1.0.0": {
         "dependencies": {
           "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
+          "Microsoft.AspNet.Razor": "3.2.3",
           "Microsoft.AspNetCore": "1.1.1",
           "Microsoft.AspNetCore.Mvc": "1.1.2",
           "Microsoft.AspNetCore.StaticFiles": "1.1.1",
+          "Microsoft.AspNetCore.WebSockets": "1.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.1.2",
           "Microsoft.EntityFrameworkCore.Tools": "1.1.1",
           "Microsoft.Extensions.Logging.Debug": "1.1.1",
@@ -430,6 +432,11 @@
         },
         "compile": {
           "lib/net45/Microsoft.AI.ServerTelemetryChannel.dll": {}
+        }
+      },
+      "microsoft.aspnet.razor/3.2.3": {
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
         }
       },
       "microsoft.aspnetcore/1.1.1": {
@@ -909,6 +916,16 @@
         },
         "compile": {
           "lib/net451/Microsoft.AspNetCore.StaticFiles.dll": {}
+        }
+      },
+      "microsoft.aspnetcore.websockets/1.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Extensions": "1.1.1",
+          "Microsoft.Extensions.Options": "1.1.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.WebSockets.dll": {}
         }
       },
       "microsoft.aspnetcore.webutilities/1.1.1": {
@@ -1472,9 +1489,11 @@
       "mppong/1.0.0": {
         "dependencies": {
           "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
+          "Microsoft.AspNet.Razor": "3.2.3",
           "Microsoft.AspNetCore": "1.1.1",
           "Microsoft.AspNetCore.Mvc": "1.1.2",
           "Microsoft.AspNetCore.StaticFiles": "1.1.1",
+          "Microsoft.AspNetCore.WebSockets": "1.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.1.2",
           "Microsoft.EntityFrameworkCore.Tools": "1.1.1",
           "Microsoft.Extensions.Logging.Debug": "1.1.1",
@@ -1541,6 +1560,11 @@
         },
         "runtime": {
           "lib/net45/Microsoft.AI.ServerTelemetryChannel.dll": {}
+        }
+      },
+      "microsoft.aspnet.razor/3.2.3": {
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
         }
       },
       "microsoft.aspnetcore/1.1.1": {
@@ -2020,6 +2044,16 @@
         },
         "runtime": {
           "lib/net451/Microsoft.AspNetCore.StaticFiles.dll": {}
+        }
+      },
+      "microsoft.aspnetcore.websockets/1.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Extensions": "1.1.1",
+          "Microsoft.Extensions.Options": "1.1.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNetCore.WebSockets.dll": {}
         }
       },
       "microsoft.aspnetcore.webutilities/1.1.1": {
@@ -2635,6 +2669,13 @@
       "path": "microsoft.applicationinsights.windowsserver.telemetrychannel/2.2.0",
       "hashPath": "microsoft.applicationinsights.windowsserver.telemetrychannel.2.2.0.nupkg.sha512"
     },
+    "microsoft.aspnet.razor/3.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-leta+Q73O7+pR8ThTqXmwaNMSqwZQQ3BHfpUHd8S1XaUWe1jRVLitMHqo1AmY7wPNLyankPA1beiUKEGj8Q3Dw==",
+      "path": "microsoft.aspnet.razor/3.2.3",
+      "hashPath": "microsoft.aspnet.razor.3.2.3.nupkg.sha512"
+    },
     "microsoft.aspnetcore/1.1.1": {
       "type": "package",
       "serviceable": true,
@@ -2914,6 +2955,13 @@
       "sha512": "sha512-TSld1znNokVvfRtUHTpCy3tMdJ4wdWTnVOUpoDB23SvqNiP5sJB5Hn8ZdaolfPoDYeFCf9YRq4keo4Rj+cIy3g==",
       "path": "microsoft.aspnetcore.staticfiles/1.1.1",
       "hashPath": "microsoft.aspnetcore.staticfiles.1.1.1.nupkg.sha512"
+    },
+    "microsoft.aspnetcore.websockets/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D+s9MJUN9dwV3GbVVey4Maf8IRiGOzuz79Ls5Nk6dHgbvPer6BFZyeQBe3x/jm1IM0ePV6gzR5JHd+IDkY1RIw==",
+      "path": "microsoft.aspnetcore.websockets/1.0.1",
+      "hashPath": "microsoft.aspnetcore.websockets.1.0.1.nupkg.sha512"
     },
     "microsoft.aspnetcore.webutilities/1.1.1": {
       "type": "package",

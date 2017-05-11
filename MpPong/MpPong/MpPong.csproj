@@ -17,6 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\build\images\arrow-instruction.png" />
+    <Content Include="wwwroot\build\images\icons\github.png" />
+    <Content Include="wwwroot\build\images\icons\googleplus.png" />
+    <Content Include="wwwroot\build\styles\bootstrap.min.css.map" />
+    <Content Include="wwwroot\build\styles\index.css" />
+    <!--Brandons stuff up above-->
     <Content Include="wwwroot\build\assets\sprites\dbl.png" />
     <Content Include="wwwroot\build\assets\ui\full.png" />
     <Content Include="wwwroot\build\assets\ui\mouse.png" />
@@ -41,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.2.3" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.WebSockets" Version="1.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />

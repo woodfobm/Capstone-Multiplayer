@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Net.WebSockets;
+using System.Reflection;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -44,13 +49,18 @@ namespace MpPong
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc();
+            services.AddWebSocketManager();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, MpPongPlayerContext context)
+        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider, IHostingEnvironment env, ILoggerFactory loggerFactory, MpPongPlayerContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            //Brandons websocket stuff below
+            app.UseWebSockets();
+
+            app.MapWebSocketManager("/ws", serviceProvider.GetService<ChatMessageHandler>());
 
             if (env.IsDevelopment())
             {
@@ -63,7 +73,8 @@ namespace MpPong
             }
 
             app.UseStaticFiles();
-
+            app.UseFileServer();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

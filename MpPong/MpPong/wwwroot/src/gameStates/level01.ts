@@ -23,7 +23,7 @@
         countdownText: Phaser.Text;
         countdownTimer: Phaser.TimerEvent;
         streak = [];
-        scoreToWin = 1;
+        scoreToWin = 11;
         xVelocity = 600;
         yVelocity = 600;
 

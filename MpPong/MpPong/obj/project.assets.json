@@ -117,6 +117,15 @@
           "lib/net45/Microsoft.AI.ServerTelemetryChannel.dll": {}
         }
       },
+      "Microsoft.AspNet.Razor/3.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
       "Microsoft.AspNetCore/1.1.1": {
         "type": "package",
         "dependencies": {
@@ -763,6 +772,20 @@
         },
         "runtime": {
           "lib/net451/Microsoft.AspNetCore.StaticFiles.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.WebSockets/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Extensions": "1.1.1",
+          "Microsoft.Extensions.Options": "1.1.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.WebSockets.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNetCore.WebSockets.dll": {}
         }
       },
       "Microsoft.AspNetCore.WebUtilities/1.1.1": {
@@ -2027,6 +2050,15 @@
           "lib/net45/Microsoft.AI.ServerTelemetryChannel.dll": {}
         }
       },
+      "Microsoft.AspNet.Razor/3.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/System.Web.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Web.Razor.dll": {}
+        }
+      },
       "Microsoft.AspNetCore/1.1.1": {
         "type": "package",
         "dependencies": {
@@ -2673,6 +2705,20 @@
         },
         "runtime": {
           "lib/net451/Microsoft.AspNetCore.StaticFiles.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.WebSockets/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Extensions": "1.1.1",
+          "Microsoft.Extensions.Options": "1.1.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/net451/Microsoft.AspNetCore.WebSockets.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNetCore.WebSockets.dll": {}
         }
       },
       "Microsoft.AspNetCore.WebUtilities/1.1.1": {
@@ -3952,6 +3998,17 @@
         "microsoft.applicationinsights.windowsserver.telemetrychannel.nuspec"
       ]
     },
+    "Microsoft.AspNet.Razor/3.2.3": {
+      "sha512": "leta+Q73O7+pR8ThTqXmwaNMSqwZQQ3BHfpUHd8S1XaUWe1jRVLitMHqo1AmY7wPNLyankPA1beiUKEGj8Q3Dw==",
+      "type": "package",
+      "path": "microsoft.aspnet.razor/3.2.3",
+      "files": [
+        "lib/net45/System.Web.Razor.dll",
+        "lib/net45/System.Web.Razor.xml",
+        "microsoft.aspnet.razor.3.2.3.nupkg.sha512",
+        "microsoft.aspnet.razor.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore/1.1.1": {
       "sha512": "BC5elyJ1Njury/O2/eBbTnej5b5B23SA9R2PzmRhWE9mwhgmqlO/I4woRO3Tw8mLEUkB14E8umZjZnIHqh7k2w==",
       "type": "package",
@@ -4464,6 +4521,19 @@
         "lib/netstandard1.3/Microsoft.AspNetCore.StaticFiles.xml",
         "microsoft.aspnetcore.staticfiles.1.1.1.nupkg.sha512",
         "microsoft.aspnetcore.staticfiles.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.WebSockets/1.0.1": {
+      "sha512": "D+s9MJUN9dwV3GbVVey4Maf8IRiGOzuz79Ls5Nk6dHgbvPer6BFZyeQBe3x/jm1IM0ePV6gzR5JHd+IDkY1RIw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.websockets/1.0.1",
+      "files": [
+        "lib/net451/Microsoft.AspNetCore.WebSockets.dll",
+        "lib/net451/Microsoft.AspNetCore.WebSockets.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.WebSockets.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.WebSockets.xml",
+        "microsoft.aspnetcore.websockets.1.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.websockets.nuspec"
       ]
     },
     "Microsoft.AspNetCore.WebUtilities/1.1.1": {
@@ -7655,9 +7725,11 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.5.2": [
       "Microsoft.ApplicationInsights.AspNetCore >= 2.0.0",
+      "Microsoft.AspNet.Razor >= 3.2.3",
       "Microsoft.AspNetCore >= 1.1.1",
       "Microsoft.AspNetCore.Mvc >= 1.1.2",
       "Microsoft.AspNetCore.StaticFiles >= 1.1.1",
+      "Microsoft.AspNetCore.WebSockets >= 1.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 1.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 1.1.1",
       "Microsoft.Extensions.Logging.Debug >= 1.1.1",
@@ -7707,6 +7779,10 @@
             "target": "Package",
             "version": "1.1.2"
           },
+          "Microsoft.AspNetCore.WebSockets": {
+            "target": "Package",
+            "version": "1.0.1"
+          },
           "Microsoft.AspNetCore.Mvc": {
             "target": "Package",
             "version": "1.1.2"
@@ -7714,6 +7790,10 @@
           "Microsoft.ApplicationInsights.AspNetCore": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "Microsoft.AspNet.Razor": {
+            "target": "Package",
+            "version": "3.2.3"
           },
           "Microsoft.AspNetCore.StaticFiles": {
             "target": "Package",

@@ -15,6 +15,7 @@ var MpPong;
                 _this.state.add('Preloader', Client.Preloader, false);
                 _this.state.add('MainMenu', Client.MainMenu, false);
                 _this.state.add('Level01', Client.Level01, false);
+                _this.state.add('Level02', Client.Level02, false);
                 _this.state.add('Win', Client.Win, false);
                 _this.state.add('Lose', Client.Lose, false);
                 //Adds our various states and starts our initial boot. This is where we would add more levels or 
@@ -249,7 +250,7 @@ var MpPong;
                 _this.p1Score = 0;
                 _this.p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
                 _this.streak = [];
-                _this.scoreToWin = 1;
+                _this.scoreToWin = 11;
                 _this.xVelocity = 600;
                 _this.yVelocity = 600;
                 // Number of ticks for game countdown
@@ -417,11 +418,11 @@ var MpPong;
                 //Probably needs some tweaking for multiplayer
                 if (this.p1Score >= this.scoreToWin) {
                     this.game.state.start('Win', true, true);
-                    this.ball.destroy(); //Prevents a second ball from spawning on next screen
+                    this.ball.alpha = 0; //The ball from this state somehow carries forward, at least makes it invisible for now
                 }
                 else if (this.p2Score >= this.scoreToWin) {
                     this.game.state.start('Lose', true, true);
-                    this.ball.destroy(); //Prevents a second ball from spawning on next screen
+                    this.ball.alpha = 0;
                 }
             };
             Level01.prototype.aiFollow = function () {
@@ -486,6 +487,8 @@ var MpPong;
                 _this.p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
                 _this.streak = [];
                 _this.scoreToWin = 11;
+                _this.xVelocity = 600;
+                _this.yVelocity = 600;
                 // Number of ticks for game countdown
                 // remember to also change value in 
                 // startCountdown()
@@ -496,10 +499,8 @@ var MpPong;
                 this.stage.alpha = 1;
                 this.physics.startSystem(Phaser.Physics.ARCADE); //Starts physics system for game and begins creating our player and ball objects
                 this.player = new Client.Player(this.game, this.world.centerX - 500, this.world.centerX);
-                this.player.anchor.setTo(0, 5);
                 //Replace this with other player at some point
-                this.ai = new Client.PaddleAi(this.game, this.world.centerX + 475, this.world.centerX);
-                this.ai.anchor.setTo(0, 5);
+                this.player2 = new Client.Player(this.game, this.world.centerX + 475, this.world.centerX);
                 this.lBound = new Client.LBound(this.game, (this.world.centerX - this.world.centerX), this.world.centerX);
                 this.rBound = new Client.RBound(this.game, (this.world.centerX + this.world.centerX), this.world.centerX);
                 //Creates and position player scores /* UI BELOW HERE */
@@ -508,14 +509,27 @@ var MpPong;
                 this.quit = new Client.Quit(this.game, this.world.centerX, this.world.centerY + (this.world.centerY - 50));
                 this.full = new Client.Full(this.game, this.world.centerX - 90, this.world.centerY + (this.world.centerY - 50));
                 // Call reset ball to start a new serve
-                this.resetBall();
+                this.resetBall(2);
+                var uri = "ws://" + window.location.host + "/ws";
+                function connect() {
+                    this.socket = new WebSocket(uri);
+                    this.socket.onopen = function (event) {
+                    };
+                    this.socket.onclose = function (event) {
+                    };
+                    this.socket.onerror = function (event) {
+                    };
+                    this.socket.onmessage = function (event) {
+                        console.log(event.data);
+                    };
+                }
+                connect();
             };
             Level02.prototype.createBall = function () {
                 //Self explanatory
-                //this.ball = new Ball(this.game, this.world.centerX, this.world.centerX);
-                this.ball.anchor.setTo(0, 5);
+                this.ball = new Client.Ball(this.game, this.world.centerX, this.world.centerX, this.xVelocity, this.yVelocity);
             };
-            Level02.prototype.resetBall = function () {
+            Level02.prototype.resetBall = function (score) {
                 //Kills previous ball if it exists freeing up memory
                 //And resets game
                 if (this.ball) {
@@ -524,6 +538,34 @@ var MpPong;
                 }
                 this.countdownText = this.add.text(this.world.centerX, this.world.centerY, "", { fontSize: '200px', fill: '#FFF' });
                 this.countdownText.anchor.setTo(0.5, 0.5);
+                // Math.floor(Math.random() * (max - min)) + min;
+                // In this case, min = 300, max = 500.
+                if (score === 1) {
+                    // Player 1 scored on player 2 so
+                    // launch the ball towards player 1 as if
+                    // player 2 is serving.
+                    this.xVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
+                    // Invert the X axis so that it actually launches towards player 1.
+                    this.xVelocity = this.xVelocity * (-1);
+                    this.yVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
+                }
+                else {
+                    // If game is fresh, nobody scored but ALSO
+                    // if Player 2 scored on player 1;
+                    // launch the ball towards player 2 as if
+                    // player 1 is serving.
+                    this.xVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
+                    this.yVelocity = Math.floor(Math.random() * (500 - 300)) + (300);
+                }
+                // The yVelocity currently only shoots on the bottom half of the screen
+                // Let's give it a chance to be either a positive or negative shot along the y-coordinate!
+                // Initialize a variable to a random number with the possibilities of 1-10
+                var yCoordinateInversion = Math.floor(Math.random() * (10 - 1)) + 1;
+                // If the random number is 6 or higher, invert it!
+                // Else not required but; Else - leave it how it is!
+                if (yCoordinateInversion >= 6) {
+                    this.yVelocity = this.yVelocity * (-1);
+                }
                 this.startCountdown();
             };
             Level02.prototype.startCountdown = function () {
@@ -577,12 +619,12 @@ var MpPong;
                 //Increments and then updates player score on the fly
                 this.p2Score += 1;
                 this.p2ScoreText.text = 'P2 Score: ' + this.p2Score;
-                this.resetBall();
+                this.resetBall(2);
             };
             Level02.prototype.rBoundHit = function () {
                 this.p1Score += 1;
                 this.p1ScoreText.text = 'P1 Score: ' + this.p1Score;
-                this.resetBall();
+                this.resetBall(1);
             };
             Level02.prototype.winLoseState = function () {
                 //Need to check p1 and p2 score to see if either has won, this is setup for singleplayer right now
@@ -594,25 +636,11 @@ var MpPong;
                     this.game.state.start('Lose', true, true);
                 }
             };
-            Level02.prototype.aiFollow = function () {
-                //Need to setup ai movement AFTER ball is created else errors happen. First parameter
-                //tells the game what tos etup movement on, second is the x (We dont want ANY x movement)
-                //Third is y axis which aprox where the ball's Y position is, and the last parameter
-                //is the velocity it will have
-                this.ai.body.y = 0;
-                if (this.ball.body.velocity.y >= 0) {
-                    this.game.physics.arcade.moveToXY(this.ai, this.ai.x, (this.ai.body.y - this.ball.body.y), -400); // Move down
-                }
-                else if (this.ball.body.velocity.y < 0) {
-                    this.game.physics.arcade.moveToXY(this.ai, this.ai.x, (this.ai.body.y - this.ball.body.y), 400); //Move up
-                }
-            };
             Level02.prototype.powerMode = function () {
                 while (this.i < 100) {
                     //For powerups, careful sort of causes seizures right now
                     this.stage.backgroundColor = Phaser.Color.getRandomColor(50, 255, 255); //gets random RGB color for background
                     this.player.tint = Math.random() * 0xffffff; //Hex/Numeric color value that is multiplied by math.random
-                    this.ai.tint = Math.random() * 0xffffff;
                     this.ball.tint = Math.random() * 0xffffff;
                     this.i += 1;
                 }
@@ -620,11 +648,10 @@ var MpPong;
             Level02.prototype.update = function () {
                 //Sets up collisions so ball bounces off players
                 this.physics.arcade.collide(this.ball, this.player);
-                this.physics.arcade.collide(this.ball, this.ai);
+                this.physics.arcade.collide(this.ball, this.player2);
                 this.physics.arcade.collide(this.ball, this.lBound, this.lBoundHit, null, this); //Left bound collision
                 this.physics.arcade.collide(this.ball, this.rBound, this.rBoundHit, null, this); // Right bound collision
-                //this.time.events.add(Phaser.Timer.SECOND * 13, this.powerMode, this); //Need delay so it isn't triggered right away
-                this.time.events.add(Phaser.Timer.SECOND * 5, this.aiFollow, this);
+                //this.time.events.add(Phaser.Timer.SECOND * 13, this.powerMode, this); //Need delay so it isn't triggered right away       
                 this.winLoseState();
             };
             return Level02;
@@ -732,7 +759,7 @@ var MpPong;
                 tween.onComplete.add(this.startGame, this);
             };
             MainMenu.prototype.startGame = function () {
-                this.game.state.start('Level01', true, false);
+                this.game.state.start('Level02', true, false);
                 // Destroying the logo and text objects to cleaar the screen
                 this.logo.destroy();
                 this.mainMenutxt.destroy();
