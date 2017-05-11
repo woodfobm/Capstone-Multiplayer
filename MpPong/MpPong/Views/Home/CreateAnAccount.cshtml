@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Create an Account";
+}
+@{
+    <head>
+        <link rel="stylesheet" href="~/build/styles/index.css" />
+    </head>
+
+
+    <h2>Create an account</h2>
+    <form id="createAccount">
+        <div class="form-group">
+            <label for="formGroupUsername">Username:</label>
+            <input type="text" class="form-control" id="formGroupUsername" placeholder="JonnyAppleseed123">
+        </div>
+        <div class="form-group">
+            <label for="formGroupPassword">Password:</label>
+            <input type="password" class="form-control" id="formGroupPassword" placeholder="password123">
+        </div>
+        <div class="form-group">
+            <label for="formGroupPasswordVerify">Verify Password:</label>
+            <input type="password" class="form-control" id="formGroupPasswordVerify" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <form id="login">
+        <h3>Already have an account? Login!</h3>
+        <div class="form-group">
+            <label for="formGroupUsername">Username:</label>
+            <input type="text" class="form-control" id="formGroupUsername" placeholder="JonnyAppleseed123">
+        </div>
+        <div class="form-group">
+            <label for="formGroupPassword">Password:</label>
+            <input type="password" class="form-control" id="formGroupPassword" placeholder="password123">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <environment names="Development">
+        <script src="~/build/libs/phaser.min.js"></script>
+        <script src="~/build/game.js"></script>
+    </environment>
+}

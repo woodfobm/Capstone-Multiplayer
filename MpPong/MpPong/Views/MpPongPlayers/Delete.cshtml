@@ -1,0 +1,47 @@
+@model MpPong.Models.MpPongPlayer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MpPongPlayer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="ID" />
+        <dt>
+            @Html.DisplayNameFor(model => model.playerUsername)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.playerUsername)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.playerPassword)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.playerPassword)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.playerWins)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.playerWins)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.playerLoses)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.playerLoses)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

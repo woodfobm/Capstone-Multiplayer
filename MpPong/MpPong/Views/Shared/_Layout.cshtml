@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Pong</title>
+    <link rel="stylesheet" href="~/build/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/build/styles/default.css" />
+    
+    
+</head>
+<body>
+
+    <main>
+        <div class="container-fluid">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="">
+                            <img src="~/build/images/pongtry.png"
+                                 id="logo" />
+                        </a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Home/Index">Home</a></li>
+                        <li><a href="/Home/About">About</a></li>
+                        <li><a href="/Home/Contact">Contact</a></li>
+                        <li><a href="/Home/CreateAnAccount">Create an Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            @RenderBody()
+
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer">
+
+            <a id="github" href="https://github.com/woodfobm/Capstone-Multiplayer">
+                <img src="~/build/images/icons/github.png"
+                     width="45" />
+            </a>
+            <span>.</span>
+            <a id="github" href="https://plus.google.com/communities/107491719660148743488">
+                <img src="~/build/images/icons/googleplus.png"
+                     width="45" />
+            </a>
+
+        </div>
+        <p>&copy;Multiplayer Group &rArr; 2017</p>
+    </footer>
+
+    <environment names="Development">
+        <script src="~/build/libs/jquery-3.2.1.min.js"></script>
+        <script src="~/build/libs/bootstrap.min.js"></script>
+    </environment>
+    
+    
+</body>
+</html>

@@ -1,0 +1,100 @@
+﻿@font-face {
+    font-family: 'Joystick';
+    src: url('../fonts/Joystick.otf'),
+         url('../fonts/Joystick Italic.otf'),
+         url('../fonts/Joystick Bold.otf');
+
+}
+
+body {
+    background-color: #298AB4;
+    font-family: 'Joystick';
+}
+
+main {
+    width: 900px;
+    margin: 0 auto;
+}
+
+span {
+    font-style: italic;
+}
+
+.navbar-default {
+    background-color: #298AB4;
+    border-color: #298AB4;
+}
+
+nav {
+    margin-top: 15px;
+    padding-bottom: 20px;
+    width: 900px;
+    margin: 0 auto;
+}
+
+a.navbar-brand {
+    padding: 0;
+    margin: 0;
+}
+
+h3 {
+    font-size: 45px;
+    color: #5276CD;
+    margin: 0;
+    padding-bottom: 15px;
+    text-shadow: -1px -1px 0 #0D2F85, 1px -1px 0 #0D2F85, -1px 1px 0 #0D2F85, 1px 1px 0 #0D2F85;
+}
+
+img#logo {
+    padding: 0;
+    margin: 0;
+}
+
+ul.nav {
+    float: right;
+    margin-top: 28px;
+}
+
+.navbar-default .navbar-nav > li a {
+    color: #76D8B5;
+}
+
+.navbar-default .navbar-nav > li a:hover {
+    color: #45CB99;
+}
+
+ul.nav > li > a {
+    padding: 0 15px;
+    margin: 0;
+    font-size: 26px;
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+footer {
+    font-family: Helvetica;
+    font-size: 12px;
+    font-weight: 700;
+    color: #025A82;
+}
+
+footer p:hover{
+    cursor: default;
+    color: #0A78A7;
+}
+
+div#footer {
+    padding: 10px;
+}
+
+div#footer img{
+    margin: 7px;
+}
+
+div#footer img:hover {
+    opacity: 0.8;
+}

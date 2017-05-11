@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net452</TargetFramework>
+    <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\bin\**" />
+    <Compile Remove="wwwroot\obj\**" />
+    <Content Remove="wwwroot\bin\**" />
+    <Content Remove="wwwroot\obj\**" />
+    <EmbeddedResource Remove="wwwroot\bin\**" />
+    <EmbeddedResource Remove="wwwroot\obj\**" />
+    <None Remove="wwwroot\bin\**" />
+    <None Remove="wwwroot\obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\build\assets\sprites\dbl.png" />
+    <Content Include="wwwroot\build\assets\ui\full.png" />
+    <Content Include="wwwroot\build\assets\ui\mouse.png" />
+    <Content Include="wwwroot\build\assets\ui\pause.png" />
+    <Content Include="wwwroot\build\assets\ui\play.png" />
+    <Content Include="wwwroot\build\assets\ui\quit.jpg" />
+    <Content Include="wwwroot\game.js" />
+    <Content Include="wwwroot\game.js.map" />
+    <Content Include="wwwroot\src\gameObjects\doublePtsPowerup.ts" />
+    <Content Include="wwwroot\src\gameObjects\paddleAi.ts" />
+    <Content Include="wwwroot\src\gameStates\level02.ts">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\src\gameStates\Lose.ts" />
+    <Content Include="wwwroot\src\gameStates\Win.ts" />
+    <Content Include="wwwroot\src\uiObjects\mouse.ts" />
+    <Content Include="wwwroot\src\uiObjects\pause.ts" />
+    <Content Include="wwwroot\src\uiObjects\full.ts">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\src\uiObjects\quit.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
