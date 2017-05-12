@@ -250,7 +250,7 @@ var MpPong;
                 _this.p1Score = 0;
                 _this.p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
                 _this.streak = [];
-                _this.scoreToWin = 11;
+                _this.scoreToWin = 1;
                 _this.xVelocity = 600;
                 _this.yVelocity = 600;
                 // Number of ticks for game countdown
@@ -678,16 +678,30 @@ var MpPong;
                 this.ai2 = new Client.PaddleAi(this.game, this.world.centerX - 500, this.world.centerX);
                 this.ai3 = new Client.PaddleAi(this.game, this.world.centerX + 475, this.world.centerX);
                 this.ball = new Client.Ball(this.game, this.world.centerX, this.world.centerX, 800, 800);
-                this.game.add.text(this.world.centerX - 160, this.world.centerY - 310, "           You Lose!\nGo back and try again!", "red");
+                this.game.add.text(this.world.centerX - 160, this.world.centerY - 310, "         You Lose!\nGo give it another go!", "red");
                 this.mainMenutxt = this.game.add.text(this.world.centerX - 400, this.world.centerY - 200, "Return to Main Menu", { font: "10rem Joystick, Arial", fill: "#FFF", align: "center" });
                 this.mainMenutxt.inputEnabled = true;
+                this.mainMenutxt.alpha = 0.5;
                 this.mainMenutxt.events.onInputDown.add(function () {
                     location.reload();
                 }, this);
+                this.mainMenutxt.events.onInputOver.add(function () {
+                    this.mainMenutxt.alpha = 1; //Fades in the button         
+                }, this);
+                this.mainMenutxt.events.onInputOut.add(function () {
+                    this.mainMenutxt.alpha = 0.5; //Fades it back out              
+                }, this);
                 this.exitGametxt = this.game.add.text(this.world.centerX - 160, this.world.centerY - 50, "Exit Game", { font: "10rem Joystick, Arial", fill: "#FFF", align: "center" });
                 this.exitGametxt.inputEnabled = true;
+                this.exitGametxt.alpha = 0.5;
                 this.exitGametxt.events.onInputDown.add(function () {
                     location.assign("https://www.google.com/");
+                }, this);
+                this.exitGametxt.events.onInputOver.add(function () {
+                    this.exitGametxt.alpha = 1; //Fades in the button  
+                }, this);
+                this.exitGametxt.events.onInputOut.add(function () {
+                    this.exitGametxt.alpha = 0.5; //Fades it back out          
                 }, this);
                 setTimeout(function () {
                     location.reload();
@@ -759,7 +773,7 @@ var MpPong;
                 tween.onComplete.add(this.startGame, this);
             };
             MainMenu.prototype.startGame = function () {
-                this.game.state.start('Level02', true, false);
+                this.game.state.start('Level01', true, false);
                 // Destroying the logo and text objects to cleaar the screen
                 this.logo.destroy();
                 this.mainMenutxt.destroy();
@@ -835,13 +849,27 @@ var MpPong;
                 this.game.add.text(this.world.centerX - 160, this.world.centerY - 310, "               You Win!\nWould you like to play again?", "red");
                 this.mainMenutxt = this.game.add.text(this.world.centerX - 400, this.world.centerY - 200, "Return to Main Menu", { font: "10rem Joystick, Arial", fill: "#FFF", align: "center" });
                 this.mainMenutxt.inputEnabled = true;
+                this.mainMenutxt.alpha = 0.5;
                 this.mainMenutxt.events.onInputDown.add(function () {
                     location.reload();
                 }, this);
+                this.mainMenutxt.events.onInputOver.add(function () {
+                    this.mainMenutxt.alpha = 1; //Fades in the button               
+                }, this);
+                this.mainMenutxt.events.onInputOut.add(function () {
+                    this.mainMenutxt.alpha = 0.5; //Fades it back out             
+                }, this);
                 this.exitGametxt = this.game.add.text(this.world.centerX - 160, this.world.centerY - 50, "Exit Game", { font: "10rem Joystick, Arial", fill: "#FFF", align: "center" });
                 this.exitGametxt.inputEnabled = true;
+                this.exitGametxt.alpha = 0.5;
                 this.exitGametxt.events.onInputDown.add(function () {
                     location.assign("https://www.google.com/");
+                }, this);
+                this.exitGametxt.events.onInputOver.add(function () {
+                    this.exitGametxt.alpha = 1; //Fades in the button             
+                }, this);
+                this.exitGametxt.events.onInputOut.add(function () {
+                    this.exitGametxt.alpha = 0.5; //Fades it back out       
                 }, this);
                 setTimeout(function () {
                     location.reload();

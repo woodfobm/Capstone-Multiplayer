@@ -22,16 +22,34 @@
             this.mainMenutxt = this.game.add.text(this.world.centerX - 400, this.world.centerY - 200, "Return to Main Menu",
                 { font: "10rem Joystick, Arial", fill: "#FFF", align: "center" });
             this.mainMenutxt.inputEnabled = true;
+            this.mainMenutxt.alpha = 0.5;
             this.mainMenutxt.events.onInputDown.add(function () {
                 location.reload();
             }, this);
 
+            this.mainMenutxt.events.onInputOver.add(function (this) {
+                this.mainMenutxt.alpha = 1; //Fades in the button               
+            }, this);
+
+            this.mainMenutxt.events.onInputOut.add(function (this) {
+                this.mainMenutxt.alpha = 0.5; //Fades it back out             
+            }, this); 
+
             this.exitGametxt = this.game.add.text(this.world.centerX - 160, this.world.centerY - 50, "Exit Game",
                 { font: "10rem Joystick, Arial", fill: "#FFF", align: "center" });
             this.exitGametxt.inputEnabled = true;
+            this.exitGametxt.alpha = 0.5;
             this.exitGametxt.events.onInputDown.add(function () {
                 location.assign("https://www.google.com/");
             }, this);
+
+            this.exitGametxt.events.onInputOver.add(function (this) {
+                this.exitGametxt.alpha = 1; //Fades in the button             
+            }, this);
+
+            this.exitGametxt.events.onInputOut.add(function (this) {
+                this.exitGametxt.alpha = 0.5; //Fades it back out       
+            }, this); 
             setTimeout(function () {
                 location.reload();
             }, 30000); //Need to make this an option for the user
