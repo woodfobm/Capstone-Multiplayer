@@ -33,8 +33,11 @@
             this.add.tween(this.multiPlayertxt).to({ y: 385 }, 1950, Phaser.Easing.Elastic.Out, true, 500);
             this.add.tween(this.highscoretxt).to({ y: 420 }, 2000, Phaser.Easing.Elastic.Out, true, 500);
 
-            // Replace this with different options
-            this.input.onDown.addOnce(this.fadeOut, this);
+            this.singlePlayertxt.inputEnabled = true;
+            this.singlePlayertxt.events.onInputDown.add(this.startLevel01, this);
+
+            this.multiPlayertxt.inputEnabled = true;
+            this.multiPlayertxt.events.onInputDown.add(this.startLevel02, this);
         }
 
         fadeOut() {
@@ -45,17 +48,35 @@
             //this.add.tween(this.background).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
             var tween = this.add.tween(this.logo).to({ y: 800 }, 2000, Phaser.Easing.Linear.None, true);
             //When done playing animations on the logo and background will start the actual game state
-            tween.onComplete.add(this.startGame, this);
+            //tween.onComplete.add(this.startGame, this);
         }
 
         startGame() {
             this.game.state.start('Level01', true, false);
-            // Destroying the logo and text objects to cleaar the screen
+            this.destroyObjects();
+            
+        }
+
+        destroyObjects() {
+            // Destroying the logo and text objects to clear the screen
             this.logo.destroy();
             this.mainMenutxt.destroy();
             this.singlePlayertxt.destroy();
             this.multiPlayertxt.destroy();
             this.highscoretxt.destroy();
         }
+
+        startLevel01() {
+            this.fadeOut();
+            this.game.state.start('Level01', true, false);
+            this.destroyObjects();
+        }
+
+        startLevel02() {
+            this.fadeOut();
+            this.game.state.start('Level02', true, false);
+            this.destroyObjects();
+        }
+
     }
 }

@@ -250,7 +250,7 @@ var MpPong;
                 _this.p1Score = 0;
                 _this.p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
                 _this.streak = [];
-                _this.scoreToWin = 1;
+                _this.scoreToWin = 11;
                 _this.xVelocity = 600;
                 _this.yVelocity = 600;
                 // Number of ticks for game countdown
@@ -759,8 +759,10 @@ var MpPong;
                 this.add.tween(this.singlePlayertxt).to({ y: 350 }, 1900, Phaser.Easing.Elastic.Out, true, 500);
                 this.add.tween(this.multiPlayertxt).to({ y: 385 }, 1950, Phaser.Easing.Elastic.Out, true, 500);
                 this.add.tween(this.highscoretxt).to({ y: 420 }, 2000, Phaser.Easing.Elastic.Out, true, 500);
-                // Replace this with different options
-                this.input.onDown.addOnce(this.fadeOut, this);
+                this.singlePlayertxt.inputEnabled = true;
+                this.singlePlayertxt.events.onInputDown.add(this.startLevel01, this);
+                this.multiPlayertxt.inputEnabled = true;
+                this.multiPlayertxt.events.onInputDown.add(this.startLevel02, this);
             };
             MainMenu.prototype.fadeOut = function () {
                 //Starts audio as we bring the game forward, should loop upon song completion
@@ -770,16 +772,29 @@ var MpPong;
                 //this.add.tween(this.background).to({ alpha: 0 }, 2000, Phaser.Easing.Linear.None, true);
                 var tween = this.add.tween(this.logo).to({ y: 800 }, 2000, Phaser.Easing.Linear.None, true);
                 //When done playing animations on the logo and background will start the actual game state
-                tween.onComplete.add(this.startGame, this);
+                //tween.onComplete.add(this.startGame, this);
             };
             MainMenu.prototype.startGame = function () {
                 this.game.state.start('Level01', true, false);
-                // Destroying the logo and text objects to cleaar the screen
+                this.destroyObjects();
+            };
+            MainMenu.prototype.destroyObjects = function () {
+                // Destroying the logo and text objects to clear the screen
                 this.logo.destroy();
                 this.mainMenutxt.destroy();
                 this.singlePlayertxt.destroy();
                 this.multiPlayertxt.destroy();
                 this.highscoretxt.destroy();
+            };
+            MainMenu.prototype.startLevel01 = function () {
+                this.fadeOut();
+                this.game.state.start('Level01', true, false);
+                this.destroyObjects();
+            };
+            MainMenu.prototype.startLevel02 = function () {
+                this.fadeOut();
+                this.game.state.start('Level02', true, false);
+                this.destroyObjects();
             };
             return MainMenu;
         }(Phaser.State));
