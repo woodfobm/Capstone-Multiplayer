@@ -1,54 +1,28 @@
-﻿@model IEnumerable<MpPong.Models.MpPongPlayer>
+﻿
 
-@{
-    ViewData["Title"] = "Contact";
-}
+<form action="" style="">
 
-<h2>Index</h2>
+    <label for="fName" name="fName">First Name</label>
+    <input type="text" name="fName" />
+    <br /><br />
+    <label for="lName" name="lName">Last Name</label>
+    <input type="text" name="lName" />
+    <br /><br />
+    <label for="email" name="email">Email</label>
+    <input type="email" name="email" />
+    <br /><br /><br />
+    <label for="message" name="message">Message</label>
+    <br />
+    <input type="text" name="message" size="150" />
+    <br />
+    <div class="submitButton" style="text-align:center">
+        <input type="submit" name="submit" value="submit" />
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.playerUsername)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.playerPassword)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.playerWins)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.playerLoses)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.playerUsername)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.playerPassword)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.playerWins)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.playerLoses)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    
+</form>
+<style>
+    form > input > .submitButton {
+        background-color: aqua;
+    }
+</style>
