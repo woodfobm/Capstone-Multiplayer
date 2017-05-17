@@ -1074,3 +1074,7 @@ C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\gam
 C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js.map
 C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js
 C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js.map
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js.map
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\wwwroot\build\game.js.map
