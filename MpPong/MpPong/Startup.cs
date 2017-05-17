@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Net.WebSockets;
-using System.Reflection;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
 // Framework and Data Context (Model) for database
 using Microsoft.EntityFrameworkCore;
 using MpPong.Data;
-
+using MpPong.PongHandler;
 
 namespace MpPong
 {
@@ -60,7 +51,7 @@ namespace MpPong
             //Brandons websocket stuff below
             app.UseWebSockets();
 
-            app.MapWebSocketManager("/ws", serviceProvider.GetService<ChatMessageHandler>());
+            app.MapWebSocketManager("/ws", serviceProvider.GetService<PongHttpHandler>());
 
             if (env.IsDevelopment())
             {

@@ -31,9 +31,6 @@ var MpPong;
 window.onload = function () {
     //No idea what this is, doing something with the game itself on load
     new MpPong.Client.GameEngine();
-    var scheme = window.location.protocol == "https:" ? "wss" : "ws";
-    var port = window.location.port ? (":" + document.location.port) : "";
-    console.log(scheme + "://" + window.location.hostname + port + "/ws");
 };
 var MpPong;
 (function (MpPong) {
@@ -250,7 +247,7 @@ var MpPong;
                 _this.p1Score = 0;
                 _this.p2Score = 0; // Not sure WHY we can do object literal and regular assignment Sets properties on current level object?
                 _this.streak = [];
-                _this.scoreToWin = 1;
+                _this.scoreToWin = 11;
                 _this.xVelocity = 600;
                 _this.yVelocity = 600;
                 // Number of ticks for game countdown
@@ -511,13 +508,17 @@ var MpPong;
                 // Call reset ball to start a new serve
                 this.resetBall(2);
                 var uri = "ws://" + window.location.host + "/ws";
+                var this_ = this;
                 function connect() {
                     this.socket = new WebSocket(uri);
                     this.socket.onopen = function (event) {
+                        console.log("Socket has been opened");
                     };
                     this.socket.onclose = function (event) {
+                        console.log("Socket has been closed");
                     };
                     this.socket.onerror = function (event) {
+                        console.log("Socket error has occured");
                     };
                     this.socket.onmessage = function (event) {
                         console.log(event.data);
@@ -598,22 +599,6 @@ var MpPong;
                     }
                     //Set a timer for 1050 milliseconds
                 }, Phaser.Timer.SECOND * 1.05);
-            };
-            Level02.prototype.addStreak = function (ball) {
-                if (ball) {
-                    if (this.ball.body.velocity) {
-                        // this.streak.unshift(new Ball(this.game, this.ball.x, this.ball.y));
-                        if (this.streak.length > 3) {
-                            var dump = this.streak.pop();
-                            dump.destroy();
-                        }
-                    }
-                    else {
-                        this.streak = [];
-                        return false;
-                    }
-                }
-                return false;
             };
             Level02.prototype.lBoundHit = function () {
                 //Increments and then updates player score on the fly
@@ -773,7 +758,7 @@ var MpPong;
                 tween.onComplete.add(this.startGame, this);
             };
             MainMenu.prototype.startGame = function () {
-                this.game.state.start('Level01', true, false);
+                this.game.state.start('Level02', true, false);
                 // Destroying the logo and text objects to cleaar the screen
                 this.logo.destroy();
                 this.mainMenutxt.destroy();

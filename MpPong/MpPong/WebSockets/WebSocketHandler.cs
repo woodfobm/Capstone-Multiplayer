@@ -51,7 +51,5 @@ namespace MpPong
                     await SendMessageAsync(pair.Value, message);
             }
         }
-
-        public abstract Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer);
     }
 }

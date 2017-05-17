@@ -20,8 +20,4 @@
 window.onload = () => {
 //No idea what this is, doing something with the game itself on load
     new MpPong.Client.GameEngine();
-    
-    var scheme = window.location.protocol == "https:" ? "wss" : "ws";
-    var port = window.location.port ? (":" + document.location.port) : "";
-    console.log(scheme + "://" + window.location.hostname + port + "/ws");
 };

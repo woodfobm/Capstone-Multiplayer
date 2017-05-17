@@ -49,7 +49,7 @@
         }
 
         startGame() {
-            this.game.state.start('Level01', true, false);
+            this.game.state.start('Level02', true, false);
             // Destroying the logo and text objects to cleaar the screen
             this.logo.destroy();
             this.mainMenutxt.destroy();

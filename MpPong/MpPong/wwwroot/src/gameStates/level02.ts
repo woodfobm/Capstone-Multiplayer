@@ -49,27 +49,32 @@
             this.resetBall(2);
             
             var uri = "ws://" + window.location.host + "/ws";
+            
 
+            var this_ = this;
             function connect() {
                 this.socket = new WebSocket(uri);
-                this.socket.onopen = function (event) {
 
+                this.socket.onopen = function (event) {
+                    console.log("Socket has been opened");
                 };
                 this.socket.onclose = function (event) {
-
+                    console.log("Socket has been closed");
                 };
                 
                 this.socket.onerror = function (event) {
-
+                    console.log("Socket error has occured");
                 };
 
                 this.socket.onmessage = function (event) {
-                    console.log(event.data);
+                    //console.log(event.data);
                 };
+
             }
             connect();
             
         }
+
 
         createBall() {
             //Self explanatory
@@ -163,35 +168,7 @@
                //Set a timer for 1050 milliseconds
             }, Phaser.Timer.SECOND * 1.05);
 
-        }
-
-        
-         
-        addStreak(ball) {
-
-            if (ball) {
-
-                if (this.ball.body.velocity) {
-
-                   // this.streak.unshift(new Ball(this.game, this.ball.x, this.ball.y));
-
-                    if (this.streak.length > 3) {
-                        var dump = this.streak.pop();
-                        dump.destroy();
-                    }
-
-                } else {
-
-                    this.streak = [];
-                    return false;
-
-                }
-
-            }
-
-            return false;
-
-        }        
+        }   
 
         lBoundHit() {
         //Increments and then updates player score on the fly
