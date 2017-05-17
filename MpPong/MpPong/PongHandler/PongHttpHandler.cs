@@ -34,10 +34,11 @@ namespace MpPong.PongHandler
             await SendMessageToAllAsync($"{socketId} has connected.");
 
 
-            // Trying to implement a smooth pong multiplayer experience
-            // Unforturnately there were too many differences from this project
+            // Trying to implement a smooth pong multiplayer experience.
+            // Unforturnately, there were too many differences from this project
             // and https://github.com/marcinbudny/WebSocketPong/tree/master/Pong
 
+            //GAME BREAKING!!
             //await ProcessRequestAsync(socket, socketId);
 
         }
