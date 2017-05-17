@@ -38,6 +38,11 @@ namespace MpPong
                                    cancellationToken: CancellationToken.None);
         }
 
+        internal Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task SendMessageAsync(string socketId, string message)
         {
             await SendMessageAsync(WebSocketConnectionManager.GetSocketById(socketId), message);
