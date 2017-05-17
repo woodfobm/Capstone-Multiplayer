@@ -640,3 +640,12 @@ D:\GitHub\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.cs
 D:\GitHub\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.AssemblyInfo.cs
 D:\GitHub\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.exe
 D:\GitHub\Capstone-Multiplayer\MpPong\MpPong\obj\Debug\net452\win7-x86\MpPong.pdb
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\System.Web.Razor.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.AspNetCore.WebSockets.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\Remotion.Linq.dll
+C:\Users\bwoodford8\Desktop\Capstone-Multiplayer\MpPong\MpPong\bin\Debug\net452\win7-x86\System.Interactive.Async.dll

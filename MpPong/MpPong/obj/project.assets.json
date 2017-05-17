@@ -7737,15 +7737,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\trist\\.nuget\\packages\\": {}
+    "C:\\Users\\bwoodford8\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\Capstone-Multiplayer\\MpPong\\MpPong\\MpPong.csproj",
+      "projectUniqueName": "C:\\Users\\bwoodford8\\Desktop\\Capstone-Multiplayer\\MpPong\\MpPong\\MpPong.csproj",
       "projectName": "MpPong",
-      "projectPath": "D:\\GitHub\\Capstone-Multiplayer\\MpPong\\MpPong\\MpPong.csproj",
-      "outputPath": "D:\\GitHub\\Capstone-Multiplayer\\MpPong\\MpPong\\obj\\",
+      "projectPath": "C:\\Users\\bwoodford8\\Desktop\\Capstone-Multiplayer\\MpPong\\MpPong\\MpPong.csproj",
+      "outputPath": "C:\\Users\\bwoodford8\\Desktop\\Capstone-Multiplayer\\MpPong\\MpPong\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "net452"
